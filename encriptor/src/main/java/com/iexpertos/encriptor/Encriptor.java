@@ -15,25 +15,25 @@ public class Encriptor {
 
 	public String cryptWordToNumbers(String word) {
 		validateInput(word);
-		return crypt(word, NUMBERS, null);
+		return crypt(word, NUMBERS, null, null);
 	}
 
 	public String cryptWord(String word, String charsToReplace) {
 		validateInput(word);
-		return crypt(word, CHARS_TO_REPLACE, charsToReplace);
+		return crypt(word, CHARS_TO_REPLACE, charsToReplace, null);
 	}
 
 	public String cryptSentence(String sentence) {
-		return crypt(sentence, SENTENCE, null);
+		return crypt(sentence, SENTENCE, null, new CharCrypterSentence());
 	}
 	
-	private String crypt(String stringToCrypt, int type, String charsToReplace) {
+	private String crypt(String stringToCrypt, int type, String charsToReplace, CharCrypter charCrypter) {
 		StringBuilder newWord = new StringBuilder();
 		for (char charValue : stringToCrypt.toCharArray()) {
 			String newString = null;
 			switch (type) {
 			case SENTENCE:
-				newString = String.valueOf((char) ((int) charValue + 2));
+				newString = charCrypter.cryptChar(charValue);
 				break;
 			case NUMBERS:
 				newString = String.valueOf((int) charValue + 2);
