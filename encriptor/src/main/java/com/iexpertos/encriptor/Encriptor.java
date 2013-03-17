@@ -4,9 +4,9 @@ import java.security.InvalidParameterException;
 
 public class Encriptor {
 
-	private CharCrypterNumbers charCrypterNumbers;
-	private CharCrypterSelectedChars charCrypterSelectedChars;
-	private CharCrypterSentence charCrypterSentence;
+	private CharCrypter charCrypterNumbers;
+	private CharCrypter charCrypterSentence;
+	private CharCrypterConfigurable charCrypterSelectedChars;
 
 	public Encriptor() {
 		charCrypterNumbers = new CharCrypterNumbers();
@@ -26,7 +26,7 @@ public class Encriptor {
 
 	public String cryptWord(String word, String charsToReplace) {
 		validateInput(word);
-		charCrypterSelectedChars.setCharsToReplace(charsToReplace);
+		charCrypterSelectedChars.configure(charsToReplace);
 		return crypt(word, charCrypterSelectedChars);
 	}
 
