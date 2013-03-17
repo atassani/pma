@@ -12,10 +12,8 @@ public class Encriptor {
 	public String cryptWordToNumbers(String word) {
 		validateInput(word);
 
-		char[] wordArray = word.toCharArray();
 		StringBuilder newWord = new StringBuilder();
-		for (int i = 0; i < word.length(); i++) {
-			int charValue = wordArray[i];
+		for (int charValue: word.toCharArray()) {
 			newWord.append(String.valueOf(charValue + 2));
 		}
 
