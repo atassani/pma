@@ -13,8 +13,8 @@ public class Encriptor {
 		validateInput(word);
 
 		StringBuilder newWord = new StringBuilder();
-		for (int charValue: word.toCharArray()) {
-			newWord.append(String.valueOf(charValue + 2));
+		for (char charValue: word.toCharArray()) {
+			newWord.append(String.valueOf((int)charValue + 2));
 		}
 
 		return newWord.toString();
@@ -22,34 +22,29 @@ public class Encriptor {
 
 	public String cryptWord(String word, String charsToReplace) {
 		validateInput(word);
-		char[] wordArray = word.toCharArray();
-		char[] replacement = charsToReplace.toCharArray();
 		StringBuilder newWord = new StringBuilder();
-		for (int i = 0; i < wordArray.length; i++) {
-			if (isCharInCharsToReplace(wordArray[i], replacement)){
-					int charValue = wordArray[i];
+		for (char charValue: word.toCharArray()) {
+			if (isCharInCharsToReplace(charValue, charsToReplace)){
 					newWord.append((char) (charValue + 2));
 			} else {
-				newWord.append(wordArray[i]);
+				newWord.append(charValue);
 			}
 		}
 		return newWord.toString();
 	}
 
-	private boolean isCharInCharsToReplace(char theChar, char[] replacement) {
-		for (int j = 0; j < replacement.length; j++) {
-			if (replacement[j] == theChar)
+	private boolean isCharInCharsToReplace(char theChar, String charsToReplace) {
+		for (char charToReplace: charsToReplace.toCharArray()) {
+			if (theChar == charToReplace)
 				return true;
 		}
 		return false;
 	}
 
 	public String cryptSentence(String sentence) {
-		char[] sentenceArray = sentence.toCharArray();
 		StringBuilder newWord = new StringBuilder();
-		for (int i = 0; i < sentence.length(); i++) {
-			int charValue = sentenceArray[i];
-			newWord.append( String.valueOf((char) (charValue + 2)) );
+		for (char charValue: sentence.toCharArray()) {
+			newWord.append( String.valueOf((char) ((int)charValue + 2)) );
 		}
 
 		return newWord.toString();
