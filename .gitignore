@@ -1,0 +1,9 @@
+*.class
+*.jar
+.classpath
+.project
+bin
+.DS_Store
+.git
+*.lock
+*.swp
