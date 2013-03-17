@@ -4,6 +4,10 @@ import java.security.InvalidParameterException;
 
 public class Encriptor {
 
+	private static final int SENTENCE = 0;
+	private static final int NUMBERS = 1;
+	private static final int CHARS_TO_REPLACE = 2;
+
 	public String cryptWord(String word) {
 		validateInput(word);
 		return cryptSentence(word);
@@ -11,34 +15,39 @@ public class Encriptor {
 
 	public String cryptWordToNumbers(String word) {
 		validateInput(word);
-		StringBuilder newWord = new StringBuilder();
-		for (char charValue : word.toCharArray()) {
-			String newString = String.valueOf((int) charValue + 2);
-			newWord.append(newString);
-		}
-		return newWord.toString();
+		return crypt(word, NUMBERS, null);
 	}
 
 	public String cryptWord(String word, String charsToReplace) {
 		validateInput(word);
-		StringBuilder newWord = new StringBuilder();
-		for (char charValue : word.toCharArray()) {
-			String newString = transformCharIfInCharsToReplace(charValue,
-					charsToReplace);
-			newWord.append(newString);
-		}
-		return newWord.toString();
+		return crypt(word, CHARS_TO_REPLACE, charsToReplace);
 	}
 
 	public String cryptSentence(String sentence) {
+		return crypt(sentence, SENTENCE, null);
+	}
+	
+	private String crypt(String stringToCrypt, int type, String charsToReplace) {
 		StringBuilder newWord = new StringBuilder();
-		for (char charValue : sentence.toCharArray()) {
-			String newString = String.valueOf((char) ((int) charValue + 2));
+		for (char charValue : stringToCrypt.toCharArray()) {
+			String newString = null;
+			switch (type) {
+			case SENTENCE:
+				newString = String.valueOf((char) ((int) charValue + 2));
+				break;
+			case NUMBERS:
+				newString = String.valueOf((int) charValue + 2);
+				break;
+			case CHARS_TO_REPLACE:
+				newString = transformCharIfInCharsToReplace(charValue,
+						charsToReplace);
+				break;
+			}
 			newWord.append(newString);
 		}
 		return newWord.toString();
 	}
-
+	
 	public String[] getWords(String sentence) {
 		return sentence.split(" ");
 	}
