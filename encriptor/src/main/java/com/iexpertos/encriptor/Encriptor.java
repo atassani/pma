@@ -28,14 +28,20 @@ public class Encriptor {
 		char[] replacement = charsToReplace.toCharArray();
 		char[] result = wordArray.clone();
 		for (int i = 0; i < wordArray.length; i++) {
-			for (int j = 0; j < replacement.length; j++) {
-				if (replacement[j] == wordArray[i]) {
+			if (isCharInCharsToReplace(wordArray[i], replacement)){
 					int charValue = wordArray[i];
 					result[i] = (char) (charValue + 2);
-				}
 			}
 		}
 		return String.valueOf(result);
+	}
+
+	private boolean isCharInCharsToReplace(char theChar, char[] replacement) {
+		for (int j = 0; j < replacement.length; j++) {
+			if (replacement[j] == theChar)
+				return true;
+		}
+		return false;
 	}
 
 	public String cryptSentence(String sentence) {
