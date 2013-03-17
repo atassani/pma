@@ -40,13 +40,13 @@ public class Encriptor {
 
 	public String cryptSentence(String sentence) {
 		char[] sentenceArray = sentence.toCharArray();
-		String newWord = "";
+		StringBuilder newWord = new StringBuilder();
 		for (int i = 0; i < sentence.length(); i++) {
 			int charValue = sentenceArray[i];
-			newWord += String.valueOf((char) (charValue + 2));
+			newWord.append( String.valueOf((char) (charValue + 2)) );
 		}
 
-		return newWord;
+		return newWord.toString();
 	}
 
 	public String[] getWords(String sentence) {
