@@ -14,7 +14,8 @@ public class Encriptor {
 
 		StringBuilder newWord = new StringBuilder();
 		for (char charValue: word.toCharArray()) {
-			newWord.append(String.valueOf((int)charValue + 2));
+			String newString = String.valueOf((int)charValue + 2);
+			newWord.append(newString);
 		}
 
 		return newWord.toString();
@@ -24,11 +25,13 @@ public class Encriptor {
 		validateInput(word);
 		StringBuilder newWord = new StringBuilder();
 		for (char charValue: word.toCharArray()) {
+			String newString = null;
 			if (isCharInCharsToReplace(charValue, charsToReplace)){
-					newWord.append((char) (charValue + 2));
+				newString = String.valueOf((char) (charValue + 2));
 			} else {
-				newWord.append(charValue);
+				newString = String.valueOf(charValue);
 			}
+			newWord.append( newString );
 		}
 		return newWord.toString();
 	}
@@ -40,7 +43,8 @@ public class Encriptor {
 	public String cryptSentence(String sentence) {
 		StringBuilder newWord = new StringBuilder();
 		for (char charValue: sentence.toCharArray()) {
-			newWord.append( (char) ((int)charValue + 2) );
+			String newString = String.valueOf((char) ((int)charValue + 2));
+			newWord.append( newString );
 		}
 
 		return newWord.toString();
