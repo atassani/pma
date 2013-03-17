@@ -26,14 +26,16 @@ public class Encriptor {
 		validateInput(word);
 		char[] wordArray = word.toCharArray();
 		char[] replacement = charsToReplace.toCharArray();
-		char[] result = wordArray.clone();
+		StringBuilder newWord = new StringBuilder();
 		for (int i = 0; i < wordArray.length; i++) {
 			if (isCharInCharsToReplace(wordArray[i], replacement)){
 					int charValue = wordArray[i];
-					result[i] = (char) (charValue + 2);
+					newWord.append((char) (charValue + 2));
+			} else {
+				newWord.append(wordArray[i]);
 			}
 		}
-		return String.valueOf(result);
+		return newWord.toString();
 	}
 
 	private boolean isCharInCharsToReplace(char theChar, char[] replacement) {
