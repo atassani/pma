@@ -4,6 +4,16 @@ import java.security.InvalidParameterException;
 
 public class Encriptor {
 
+	private CharCrypterNumbers charCrypterNumbers;
+	private CharCrypterSelectedChars charCrypterSelectedChars;
+	private CharCrypterSentence charCrypterSentence;
+
+	public Encriptor() {
+		charCrypterNumbers = new CharCrypterNumbers();
+		charCrypterSelectedChars = new CharCrypterSelectedChars();
+		charCrypterSentence = new CharCrypterSentence();
+	}
+	
 	public String cryptWord(String word) {
 		validateInput(word);
 		return cryptSentence(word);
@@ -11,18 +21,17 @@ public class Encriptor {
 
 	public String cryptWordToNumbers(String word) {
 		validateInput(word);
-		return crypt(word, new CharCrypterNumbers());
+		return crypt(word, charCrypterNumbers);
 	}
 
 	public String cryptWord(String word, String charsToReplace) {
 		validateInput(word);
-		CharCrypterSelectedChars charCrypter = new CharCrypterSelectedChars();
-		charCrypter.setCharsToReplace(charsToReplace);
-		return crypt(word, charCrypter);
+		charCrypterSelectedChars.setCharsToReplace(charsToReplace);
+		return crypt(word, charCrypterSelectedChars);
 	}
 
 	public String cryptSentence(String sentence) {
-		return crypt(sentence, new CharCrypterSentence());
+		return crypt(sentence, charCrypterSentence);
 	}
 
 	private String crypt(String stringToCrypt, CharCrypter charCrypter) {
