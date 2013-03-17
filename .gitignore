@@ -2,6 +2,7 @@
 *.jar
 .classpath
 .project
+.settings
 bin
 .DS_Store
 .git

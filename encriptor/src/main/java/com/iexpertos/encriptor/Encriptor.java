@@ -4,8 +4,6 @@ import java.security.InvalidParameterException;
 
 public class Encriptor {
 
-	private static final int CHARS_TO_REPLACE = 2;
-
 	public String cryptWord(String word) {
 		validateInput(word);
 		return cryptSentence(word);
@@ -13,32 +11,31 @@ public class Encriptor {
 
 	public String cryptWordToNumbers(String word) {
 		validateInput(word);
-		return crypt(word, 0, null, new CharCrypterNumbers());
+		return crypt(word, null, new CharCrypterNumbers());
 	}
 
 	public String cryptWord(String word, String charsToReplace) {
 		validateInput(word);
-		return crypt(word, CHARS_TO_REPLACE, charsToReplace, null);
+		return crypt(word, charsToReplace, null);
 	}
 
 	public String cryptSentence(String sentence) {
-		return crypt(sentence, -1, null, new CharCrypterSentence());
+		return crypt(sentence, null, new CharCrypterSentence());
 	}
-	
-	private String crypt(String stringToCrypt, int type, String charsToReplace, CharCrypter charCrypter) {
+
+	private String crypt(String stringToCrypt, String charsToReplace, CharCrypter charCrypter) {
 		StringBuilder newWord = new StringBuilder();
 		for (char charValue : stringToCrypt.toCharArray()) {
 			String newString = null;
-			if (type == CHARS_TO_REPLACE)
-				newString = transformCharIfInCharsToReplace(charValue,
-						charsToReplace);
+			if (charsToReplace != null)
+				newString = transformCharIfInCharsToReplace(charValue, charsToReplace);
 			else
 				newString = charCrypter.cryptChar(charValue);
 			newWord.append(newString);
 		}
 		return newWord.toString();
 	}
-	
+
 	public String[] getWords(String sentence) {
 		return sentence.split(" ");
 	}
@@ -59,8 +56,7 @@ public class Encriptor {
 		return charsToReplace.indexOf(theChar) >= 0;
 	}
 
-	private String transformCharIfInCharsToReplace(char charValue,
-			String charsToReplace) {
+	private String transformCharIfInCharsToReplace(char charValue, String charsToReplace) {
 		String newString;
 		if (isCharInCharsToReplace(charValue, charsToReplace)) {
 			newString = String.valueOf((char) (charValue + 2));
