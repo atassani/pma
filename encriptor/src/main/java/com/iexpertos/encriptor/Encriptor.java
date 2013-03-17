@@ -4,8 +4,6 @@ import java.security.InvalidParameterException;
 
 public class Encriptor {
 
-	private static final int SENTENCE = 0;
-	private static final int NUMBERS = 1;
 	private static final int CHARS_TO_REPLACE = 2;
 
 	public String cryptWord(String word) {
@@ -15,7 +13,7 @@ public class Encriptor {
 
 	public String cryptWordToNumbers(String word) {
 		validateInput(word);
-		return crypt(word, NUMBERS, null, null);
+		return crypt(word, 0, null, new CharCrypterNumbers());
 	}
 
 	public String cryptWord(String word, String charsToReplace) {
@@ -24,25 +22,18 @@ public class Encriptor {
 	}
 
 	public String cryptSentence(String sentence) {
-		return crypt(sentence, SENTENCE, null, new CharCrypterSentence());
+		return crypt(sentence, -1, null, new CharCrypterSentence());
 	}
 	
 	private String crypt(String stringToCrypt, int type, String charsToReplace, CharCrypter charCrypter) {
 		StringBuilder newWord = new StringBuilder();
 		for (char charValue : stringToCrypt.toCharArray()) {
 			String newString = null;
-			switch (type) {
-			case SENTENCE:
-				newString = charCrypter.cryptChar(charValue);
-				break;
-			case NUMBERS:
-				newString = String.valueOf((int) charValue + 2);
-				break;
-			case CHARS_TO_REPLACE:
+			if (type == CHARS_TO_REPLACE)
 				newString = transformCharIfInCharsToReplace(charValue,
 						charsToReplace);
-				break;
-			}
+			else
+				newString = charCrypter.cryptChar(charValue);
 			newWord.append(newString);
 		}
 		return newWord.toString();
