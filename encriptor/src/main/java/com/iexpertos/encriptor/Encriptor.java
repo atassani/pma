@@ -11,27 +11,24 @@ public class Encriptor {
 
 	public String cryptWordToNumbers(String word) {
 		validateInput(word);
-		return crypt(word, null, new CharCrypterNumbers());
+		return crypt(word, new CharCrypterNumbers());
 	}
 
 	public String cryptWord(String word, String charsToReplace) {
 		validateInput(word);
-		return crypt(word, charsToReplace, null);
+		CharCrypterSelectedChars charCrypter = new CharCrypterSelectedChars();
+		charCrypter.setCharsToReplace(charsToReplace);
+		return crypt(word, charCrypter);
 	}
 
 	public String cryptSentence(String sentence) {
-		return crypt(sentence, null, new CharCrypterSentence());
+		return crypt(sentence, new CharCrypterSentence());
 	}
 
-	private String crypt(String stringToCrypt, String charsToReplace, CharCrypter charCrypter) {
+	private String crypt(String stringToCrypt, CharCrypter charCrypter) {
 		StringBuilder newWord = new StringBuilder();
-		for (char charValue : stringToCrypt.toCharArray()) {
-			String newString = null;
-			if (charsToReplace != null)
-				newString = transformCharIfInCharsToReplace(charValue, charsToReplace);
-			else
-				newString = charCrypter.cryptChar(charValue);
-			newWord.append(newString);
+		for (char charToCrypt : stringToCrypt.toCharArray()) {
+			newWord.append(charCrypter.cryptChar(charToCrypt));
 		}
 		return newWord.toString();
 	}
@@ -50,19 +47,5 @@ public class Encriptor {
 	private void validateInput(String word) {
 		if (word.contains(" "))
 			throw new InvalidParameterException();
-	}
-
-	private boolean isCharInCharsToReplace(char theChar, String charsToReplace) {
-		return charsToReplace.indexOf(theChar) >= 0;
-	}
-
-	private String transformCharIfInCharsToReplace(char charValue, String charsToReplace) {
-		String newString;
-		if (isCharInCharsToReplace(charValue, charsToReplace)) {
-			newString = String.valueOf((char) (charValue + 2));
-		} else {
-			newString = String.valueOf(charValue);
-		}
-		return newString;
 	}
 }
