@@ -13,18 +13,17 @@ public class Encriptor {
 		validateInput(word);
 
 		char[] wordArray = word.toCharArray();
-		String newWord = "";
+		StringBuilder newWord = new StringBuilder();
 		for (int i = 0; i < word.length(); i++) {
 			int charValue = wordArray[i];
-			newWord += String.valueOf(charValue + 2);
+			newWord.append(String.valueOf(charValue + 2));
 		}
 
-		return newWord;
+		return newWord.toString();
 	}
 
 	public String cryptWord(String word, String charsToReplace) {
 		validateInput(word);
-
 		char[] wordArray = word.toCharArray();
 		char[] replacement = charsToReplace.toCharArray();
 		char[] result = wordArray.clone();
