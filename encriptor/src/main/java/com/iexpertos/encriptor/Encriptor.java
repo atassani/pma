@@ -34,17 +34,13 @@ public class Encriptor {
 	}
 
 	private boolean isCharInCharsToReplace(char theChar, String charsToReplace) {
-		for (char charToReplace: charsToReplace.toCharArray()) {
-			if (theChar == charToReplace)
-				return true;
-		}
-		return false;
+		return charsToReplace.indexOf(theChar) >= 0;
 	}
 
 	public String cryptSentence(String sentence) {
 		StringBuilder newWord = new StringBuilder();
 		for (char charValue: sentence.toCharArray()) {
-			newWord.append( String.valueOf((char) ((int)charValue + 2)) );
+			newWord.append( (char) ((int)charValue + 2) );
 		}
 
 		return newWord.toString();
