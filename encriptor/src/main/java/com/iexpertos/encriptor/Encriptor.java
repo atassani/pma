@@ -40,17 +40,6 @@ public class Encriptor {
 		return newWord.toString();
 	}
 
-	public String[] getWords(String sentence) {
-		return sentence.split(" ");
-	}
-
-	public void printWords(String sentence) {
-		String[] words = getWords(sentence);
-		for (String word : words) {
-			System.out.print("<" + word + ">");
-		}
-	}
-
 	private void validateInput(String word) {
 		if (word.contains(" "))
 			throw new InvalidParameterException();

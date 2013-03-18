@@ -1,7 +1,6 @@
 package com.iexpertos.encriptor;
 
 import java.security.InvalidParameterException;
-import java.util.Arrays;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -84,11 +83,5 @@ public class EncriptorTest {
 	public void cryptWordsAllLettersInReplacement() {
 		String result = encriptor.cryptWord("hello", "lohe");
 		Assert.assertEquals("jgnnq", result);
-	}
-
-	@Test
-	public void getWords() {
-		String[] result = encriptor.getWords("hello world");
-		Assert.assertEquals("[hello, world]", Arrays.toString(result));
 	}
 }

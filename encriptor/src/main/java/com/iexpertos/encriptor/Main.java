@@ -19,8 +19,14 @@ public class Main {
 		System.out.println("2:" + encriptor.cryptWordToNumbers("hola"));
 		System.out.println("3:" + encriptor.cryptWord("hola", "o"));
 		System.out.println("4:" + encriptor.cryptSentence("hola, que tal estas?"));
-		encriptor.printWords("hola, que tal estas?");
+		printWords("hola, que tal estas?");
 
 	}
-
+	
+	public static void printWords(String sentence) {
+		String[] words = sentence.split(" ");
+		for (String word : words) {
+			System.out.print("<" + word + ">");
+		}
+	}
 }
