@@ -1,17 +1,16 @@
 package com.iexpertos.encriptor.charcrypter;
 
-public class CharCrypterSelectedChars implements CharCrypterConfigurable {
+public class CharCrypterSelectedChars implements CharCrypter {
 
 	private String charsToReplace;
-	
+
+	public CharCrypterSelectedChars(String charsToReplace) {
+		this.charsToReplace = charsToReplace;
+	}
+
 	@Override
 	public String cryptChar(char charToCrypt) {
 		return transformCharIfInCharsToReplace(charToCrypt, charsToReplace);
-	}
-	
-	@Override
-	public void configure(String charsToReplace) {
-		this.charsToReplace = charsToReplace;
 	}
 
 	private String transformCharIfInCharsToReplace(char charValue, String charsToReplace) {

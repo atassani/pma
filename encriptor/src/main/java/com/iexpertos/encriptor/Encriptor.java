@@ -3,7 +3,6 @@ package com.iexpertos.encriptor;
 import java.security.InvalidParameterException;
 
 import com.iexpertos.encriptor.charcrypter.CharCrypter;
-import com.iexpertos.encriptor.charcrypter.CharCrypterConfigurable;
 import com.iexpertos.encriptor.charcrypter.CharCrypterConfigurableFactory;
 import com.iexpertos.encriptor.charcrypter.CharCrypterNumbers;
 import com.iexpertos.encriptor.charcrypter.CharCrypterSelectedCharsFactory;
@@ -33,9 +32,8 @@ public class Encriptor {
 
 	public String cryptWord(String word, String charsToReplace) {
 		validateInput(word);
-		CharCrypterConfigurable charCrypterSelectedChars = 
-				charCrypterSelectedCharsFactory.makeCharCrypter();
-		charCrypterSelectedChars.configure(charsToReplace);
+		CharCrypter charCrypterSelectedChars = 
+				charCrypterSelectedCharsFactory.makeCharCrypter(charsToReplace);
 		return crypt(word, charCrypterSelectedChars);
 	}
 
