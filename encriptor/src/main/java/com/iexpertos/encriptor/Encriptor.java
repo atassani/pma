@@ -1,28 +1,28 @@
 package com.iexpertos.encriptor;
 
-import java.security.InvalidParameterException;
-
 import com.iexpertos.encriptor.charcrypter.CharCrypter;
 import com.iexpertos.encriptor.charcrypter.CharCrypterConfigurableFactory;
+import com.iexpertos.encriptor.validator.InputValidator;
 
 public class Encriptor {
 
 	private CharCrypter charCrypterNumbers;
 	private CharCrypter charCrypterSentence;
 	private CharCrypterConfigurableFactory charCrypterSelectedCharsFactory;
+	private InputValidator inputValidator;
 
 	public String cryptWord(String word) {
-		validateInput(word);
+		inputValidator.validate(word);
 		return cryptSentence(word);
 	}
 
 	public String cryptWordToNumbers(String word) {
-		validateInput(word);
+		inputValidator.validate(word);
 		return crypt(word, charCrypterNumbers);
 	}
 
 	public String cryptWord(String word, String charsToReplace) {
-		validateInput(word);
+		inputValidator.validate(word);
 		CharCrypter charCrypterSelectedChars = 
 				charCrypterSelectedCharsFactory.makeCharCrypter(charsToReplace);
 		return crypt(word, charCrypterSelectedChars);
@@ -39,11 +39,6 @@ public class Encriptor {
 		}
 		return newWord.toString();
 	}
-
-	private void validateInput(String word) {
-		if (word.contains(" "))
-			throw new InvalidParameterException();
-	}
 	
 	public void setCharCrypterNumbers(CharCrypter charCrypterNumbers) {
 		this.charCrypterNumbers = charCrypterNumbers;
@@ -55,5 +50,9 @@ public class Encriptor {
 
 	public void setCharCrypterSelectedCharsFactory(CharCrypterConfigurableFactory charCrypterSelectedCharsFactory) {
 		this.charCrypterSelectedCharsFactory = charCrypterSelectedCharsFactory;
+	}
+	
+	public void setInputValidator(InputValidator inputValidator) {
+		this.inputValidator = inputValidator;
 	}
 }

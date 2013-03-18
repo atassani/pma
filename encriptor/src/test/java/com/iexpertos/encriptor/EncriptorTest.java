@@ -9,6 +9,7 @@ import org.junit.Test;
 import com.iexpertos.encriptor.charcrypter.CharCrypterNumbers;
 import com.iexpertos.encriptor.charcrypter.CharCrypterSelectedCharsFactory;
 import com.iexpertos.encriptor.charcrypter.CharCrypterSentence;
+import com.iexpertos.encriptor.validator.InputValidatorNoSpaces;
 
 public class EncriptorTest {
 
@@ -20,6 +21,7 @@ public class EncriptorTest {
 		encriptor.setCharCrypterNumbers(new CharCrypterNumbers());
 		encriptor.setCharCrypterSentence(new CharCrypterSentence());
 		encriptor.setCharCrypterSelectedCharsFactory(new CharCrypterSelectedCharsFactory());
+		encriptor.setInputValidator(new InputValidatorNoSpaces());
 	}
 
 	@Test

@@ -3,6 +3,7 @@ package com.iexpertos.encriptor;
 import com.iexpertos.encriptor.charcrypter.CharCrypterNumbers;
 import com.iexpertos.encriptor.charcrypter.CharCrypterSelectedCharsFactory;
 import com.iexpertos.encriptor.charcrypter.CharCrypterSentence;
+import com.iexpertos.encriptor.validator.InputValidatorNoSpaces;
 
 public class Main {
 
@@ -14,6 +15,7 @@ public class Main {
 		encriptor.setCharCrypterNumbers(new CharCrypterNumbers());
 		encriptor.setCharCrypterSentence(new CharCrypterSentence());
 		encriptor.setCharCrypterSelectedCharsFactory(new CharCrypterSelectedCharsFactory());
+		encriptor.setInputValidator(new InputValidatorNoSpaces());
 		
 		System.out.println("1:" + encriptor.cryptWord("hola"));
 		System.out.println("2:" + encriptor.cryptWordToNumbers("hola"));
