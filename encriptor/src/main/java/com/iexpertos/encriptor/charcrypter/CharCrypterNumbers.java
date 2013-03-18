@@ -1,4 +1,4 @@
-package com.iexpertos.encriptor;
+package com.iexpertos.encriptor.charcrypter;
 
 public class CharCrypterNumbers implements CharCrypter {
 

@@ -2,6 +2,13 @@ package com.iexpertos.encriptor;
 
 import java.security.InvalidParameterException;
 
+import com.iexpertos.encriptor.charcrypter.CharCrypter;
+import com.iexpertos.encriptor.charcrypter.CharCrypterConfigurable;
+import com.iexpertos.encriptor.charcrypter.CharCrypterConfigurableFactory;
+import com.iexpertos.encriptor.charcrypter.CharCrypterNumbers;
+import com.iexpertos.encriptor.charcrypter.CharCrypterSelectedCharsFactory;
+import com.iexpertos.encriptor.charcrypter.CharCrypterSentence;
+
 public class Encriptor {
 
 	private CharCrypter charCrypterNumbers;

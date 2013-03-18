@@ -1,4 +1,4 @@
-package com.iexpertos.encriptor;
+package com.iexpertos.encriptor.charcrypter;
 
 public interface CharCrypterConfigurable extends CharCrypter {
 
