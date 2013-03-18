@@ -6,11 +6,9 @@ public class Encriptor {
 
 	private CharCrypter charCrypterNumbers;
 	private CharCrypter charCrypterSentence;
-	private CharCrypterConfigurable charCrypterSelectedChars;
 
 	public Encriptor() {
 		charCrypterNumbers = new CharCrypterNumbers();
-		charCrypterSelectedChars = new CharCrypterSelectedChars();
 		charCrypterSentence = new CharCrypterSentence();
 	}
 	
@@ -26,6 +24,7 @@ public class Encriptor {
 
 	public String cryptWord(String word, String charsToReplace) {
 		validateInput(word);
+		CharCrypterConfigurable charCrypterSelectedChars = new CharCrypterSelectedChars();
 		charCrypterSelectedChars.configure(charsToReplace);
 		return crypt(word, charCrypterSelectedChars);
 	}
