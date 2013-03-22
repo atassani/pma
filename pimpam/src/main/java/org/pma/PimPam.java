@@ -7,9 +7,9 @@ public class PimPam {
 	private static final String thenReturnPIM = "Pim";
 	private static final String thenReturnPAM = "Pam";
 	
-	public String play(int inputNumber) {
-		String message = applyRuleTo(inputNumber, whenDivisibleByThree, thenReturnPIM);
-		message += applyRuleTo(inputNumber, whenDivisibleByFive, thenReturnPAM);
+	public String play(int number) {
+		String message = applyRuleTo(number, whenDivisibleByThree, thenReturnPIM);
+		message += applyRuleTo(number, whenDivisibleByFive, thenReturnPAM);
 		return message;
 	}
 	
@@ -17,6 +17,7 @@ public class PimPam {
 		if (isDivisibleBy(number, divisor)) return message;
 		return "";
 	}
+	
 	private boolean isDivisibleBy(int number, int divisor) {
 		return number % divisor == 0;
 	}
