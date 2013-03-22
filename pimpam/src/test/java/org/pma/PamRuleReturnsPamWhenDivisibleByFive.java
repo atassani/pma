@@ -21,6 +21,6 @@ public class PamRuleReturnsPamWhenDivisibleByFive {
 
 	@Test
 	public void whenTenReturnPim() {
-		Assert.assertEquals("Pam", pimPam.play(10));
+		Assert.assertEquals("Pam", pimPam.play(25));
 	}
 }

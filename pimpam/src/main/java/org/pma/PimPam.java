@@ -1,21 +1,19 @@
 package org.pma;
 
 public class PimPam {
-
-	private static final int whenDivisibleByThree = 3;
-	private static final int whenDivisibleByFive = 5;
-	private static final String thenReturnPIM = "Pim";
-	private static final String thenReturnPAM = "Pam";
+	int[] divisorValues = new int[] {3, 5};
+	String[] messageValues = new String[]{"Pim", "Pam"};
 	
 	public String play(int number) {
-		String message = applyRuleTo(number, whenDivisibleByThree, thenReturnPIM);
-		message += applyRuleTo(number, whenDivisibleByFive, thenReturnPAM);
-		return message;
+		return divisibleRule(number);
 	}
 	
-	private String applyRuleTo(int number, int divisor, String message) {
-		if (isDivisibleBy(number, divisor)) return message;
-		return "";
+	private String divisibleRule(int number) {
+		String message = "";
+		for (int i = 0; i < divisorValues.length; i++) {
+			if (isDivisibleBy(number, divisorValues[i])) message += messageValues[i];	
+		}
+		return message;
 	}
 	
 	private boolean isDivisibleBy(int number, int divisor) {

@@ -21,11 +21,11 @@ public class PimRuleReturnsPimWhenDivisibleByThree {
 	
 	@Test
 	public void whenTwoReturnBlank() {
-		Assert.assertEquals("", pimPam.play(2));
+		Assert.assertEquals("", pimPam.play(1));
 	}
 	
 	@Test
 	public void whenSixReturnPim() {
-		Assert.assertEquals("Pim", pimPam.play(6));
+		Assert.assertEquals("Pim", pimPam.play(9));
 	}
 }
