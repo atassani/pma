@@ -1,24 +1,22 @@
 package org.pma;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PimPam {
-	int[] divisorValues = new int[] {3, 5};
-	String[] messageValues = new String[]{"Pim", "Pam"};
+	List<DivisibleRule> divisibleRules;
+	
+	public PimPam() {
+		divisibleRules = new ArrayList<DivisibleRule>();
+		divisibleRules.add(new DivisibleRule(3, "Pim")); 
+		divisibleRules.add(new DivisibleRule(5, "Pam")); 
+	}
 	
 	public String play(int number) {
 		String message = "";
-		for (int i = 0; i < divisorValues.length; i++) {
-			message += divisibleRule(number, divisorValues[i], messageValues[i]);
+		for (DivisibleRule rule : divisibleRules) {
+			message += rule.apply(number);
 		}
 		return message;
 	}
-	
-	private String divisibleRule(int number, int divisor, String message) {
-		if (isDivisibleBy(number, divisor)) return message;	
-		return "";
-	}
-	
-	private boolean isDivisibleBy(int number, int divisor) {
-		return number % divisor == 0;
-	}
-
 }
