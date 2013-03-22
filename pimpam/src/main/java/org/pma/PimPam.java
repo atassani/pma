@@ -5,15 +5,16 @@ public class PimPam {
 	String[] messageValues = new String[]{"Pim", "Pam"};
 	
 	public String play(int number) {
-		return divisibleRule(number);
-	}
-	
-	private String divisibleRule(int number) {
 		String message = "";
 		for (int i = 0; i < divisorValues.length; i++) {
-			if (isDivisibleBy(number, divisorValues[i])) message += messageValues[i];	
+			message += divisibleRule(number, divisorValues[i], messageValues[i]);
 		}
 		return message;
+	}
+	
+	private String divisibleRule(int number, int divisor, String message) {
+		if (isDivisibleBy(number, divisor)) return message;	
+		return "";
 	}
 	
 	private boolean isDivisibleBy(int number, int divisor) {
