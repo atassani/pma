@@ -8,3 +8,4 @@ bin
 .git
 *.lock
 *.swp
+target
