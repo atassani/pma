@@ -2,14 +2,19 @@ package org.pma;
 
 public class PimPam {
 
-	public String play(int number) {
-		String result = valueIfNumberDivisibleBy(number, 3, "Pim");
-		result += valueIfNumberDivisibleBy(number, 5, "Pam");
-		return result;
+	private static final int whenDivisibleByThree = 3;
+	private static final int whenDivisibleByFive = 5;
+	private static final String thenReturnPIM = "Pim";
+	private static final String thenReturnPAM = "Pam";
+	
+	public String play(int inputNumber) {
+		String message = applyRuleTo(inputNumber, whenDivisibleByThree, thenReturnPIM);
+		message += applyRuleTo(inputNumber, whenDivisibleByFive, thenReturnPAM);
+		return message;
 	}
 	
-	private String valueIfNumberDivisibleBy(int number, int divisor, String result) {
-		if (isDivisibleBy(number, divisor)) return result;
+	private String applyRuleTo(int number, int divisor, String message) {
+		if (isDivisibleBy(number, divisor)) return message;
 		return "";
 	}
 	private boolean isDivisibleBy(int number, int divisor) {
