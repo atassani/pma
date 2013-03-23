@@ -8,11 +8,11 @@ import org.junit.Test;
 
 public class PumRuleReturnsPumWhenDivisibleByTwo {
 
-	private PimPam pimPam;
+	private Game pimPam;
 
 	@Before
 	public void init() {
-		pimPam = new PimPam();
+		pimPam = new Game();
 	}
 
 	@Test

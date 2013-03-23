@@ -6,11 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class PimPamRulReturnsPimPamWhenDivisibleByThreeAndFive {
-	private PimPam pimPam;
+	private Game pimPam;
 
 	@Before
 	public void init() {
-		pimPam = new PimPam();
+		pimPam = new Game();
 	}
 	
 	@Test

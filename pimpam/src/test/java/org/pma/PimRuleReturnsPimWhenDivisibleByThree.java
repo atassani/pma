@@ -7,11 +7,11 @@ import org.junit.Test;
 
 public class PimRuleReturnsPimWhenDivisibleByThree {
 
-	private PimPam pimPam;
+	private Game pimPam;
 
 	@Before
 	public void init() {
-		pimPam = new PimPam();
+		pimPam = new Game();
 	}
 
 	@Test
