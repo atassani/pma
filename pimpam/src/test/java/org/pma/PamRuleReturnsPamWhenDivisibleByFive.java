@@ -1,5 +1,8 @@
 package org.pma;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import junit.framework.Assert;
 
 import org.junit.Before;
@@ -11,7 +14,11 @@ public class PamRuleReturnsPamWhenDivisibleByFive {
 
 	@Before
 	public void init() {
-		pimPam = new Game();
+		List<DivisibleRule> divisibleRules;
+		divisibleRules = new ArrayList<DivisibleRule>();
+		divisibleRules.add(new DivisibleRule(3, "Pim")); 
+		divisibleRules.add(new DivisibleRule(5, "Pam"));
+		pimPam = new Game(divisibleRules);
 	}
 	
 	@Test
