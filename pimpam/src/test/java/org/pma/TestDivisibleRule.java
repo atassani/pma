@@ -5,7 +5,7 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestDivisible {
+public class TestDivisibleRule {
 
 	private static final String IRRELEVANT_MESSAGE = "message";
 	private static final int IRRELEVANT_DIVISOR = 3;
