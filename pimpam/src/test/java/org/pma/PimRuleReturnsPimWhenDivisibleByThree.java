@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class PimRuleReturnsPimWhenDivisibleByThree {
 
-	private Game pimPam;
+	private Game game;
 
 	@Before
 	public void init() {
@@ -18,21 +18,21 @@ public class PimRuleReturnsPimWhenDivisibleByThree {
 		divisibleRules = new ArrayList<DivisibleRule>();
 		divisibleRules.add(new DivisibleRule(3, "Pim")); 
 		divisibleRules.add(new DivisibleRule(5, "Pam"));
-		pimPam = new Game(divisibleRules);
+		game = new Game(divisibleRules);
 	}
 
 	@Test
 	public void whenThreeReturnPim() {
-		Assert.assertEquals("Pim", pimPam.play(3));
+		Assert.assertEquals("Pim", game.play(3));
 	}
 	
 	@Test
 	public void whenTwoReturnBlank() {
-		Assert.assertEquals("", pimPam.play(1));
+		Assert.assertEquals("", game.play(1));
 	}
 	
 	@Test
 	public void whenSixReturnPim() {
-		Assert.assertEquals("Pim", pimPam.play(9));
+		Assert.assertEquals("Pim", game.play(9));
 	}
 }

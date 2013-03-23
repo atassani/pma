@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class PimPamRulReturnsPimPamWhenDivisibleByThreeAndFive {
-	private Game pimPam;
+	private Game game;
 
 	@Before
 	public void init() {
@@ -17,11 +17,11 @@ public class PimPamRulReturnsPimPamWhenDivisibleByThreeAndFive {
 		divisibleRules = new ArrayList<DivisibleRule>();
 		divisibleRules.add(new DivisibleRule(3, "Pim")); 
 		divisibleRules.add(new DivisibleRule(5, "Pam"));
-		pimPam = new Game(divisibleRules);
+		game = new Game(divisibleRules);
 	}
 	
 	@Test
 	public void whenFifteenReturnPimPam() {
-		Assert.assertEquals("PimPam", pimPam.play(15));
+		Assert.assertEquals("PimPam", game.play(15));
 	}
 }

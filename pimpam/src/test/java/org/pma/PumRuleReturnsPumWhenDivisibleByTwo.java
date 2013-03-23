@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class PumRuleReturnsPumWhenDivisibleByTwo {
 
-	private Game pimPam;
+	private Game game;
 
 	@Before
 	public void init() {
@@ -19,12 +19,12 @@ public class PumRuleReturnsPumWhenDivisibleByTwo {
 		divisibleRules = new ArrayList<DivisibleRule>();
 		divisibleRules.add(new DivisibleRule(3, "Pim")); 
 		divisibleRules.add(new DivisibleRule(5, "Pam"));
-		pimPam = new Game(divisibleRules);
+		game = new Game(divisibleRules);
 	}
 
 	@Test
 	@Ignore(value="Until defined by business")
 	public void whenTwoReturnPum() {
-		Assert.assertEquals("Pum", pimPam.play(2));
+		Assert.assertEquals("Pum", game.play(2));
 	}
 }
