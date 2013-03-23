@@ -1,6 +1,8 @@
-package org.pma;
+package com.pimpam.game.divisible;
 
-public class DivisibleRule {
+import com.pimpam.game.Rule;
+
+public class DivisibleRule implements Rule {
 	private String message;
 	private int divisor;
 
